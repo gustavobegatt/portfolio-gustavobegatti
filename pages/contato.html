@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contato — Gustavo Begatti</title>
+  <meta name="description" content="Entre em contato com Gustavo Begatti.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fundo-corticha">
+
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="cabecalho">
+    <div class="container">
+      <a href="../index.html" class="marca">
+        <span class="pino" aria-hidden="true"></span>
+        Gustavo <span class="assinatura">Begatti</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navPrincipal">
+        <span></span><span></span><span></span>
+        <span class="visually-hidden">Abrir menu</span>
+      </button>
+
+      <nav class="nav-principal" id="navPrincipal" aria-label="Navegação principal">
+        <ul>
+          <li><a href="../index.html">Sobre</a></li>
+          <li><a href="projetos.html">Projetos</a></li>
+          <li><a href="contato.html" aria-current="page">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== CONTATO ===================== -->
+    <section class="secao" aria-label="Contato">
+      <div class="container">
+        <div class="secao-cabecalho">
+          <h2 class="secao-titulo">Vamos <span class="marcador">conversar?</span></h2>
+        </div>
+
+        <div class="contato-caixa cartao-papel">
+          <span class="fita" aria-hidden="true"></span>
+          <span class="pino-vermelho" aria-hidden="true"></span>
+          <p class="contato-lead">Me manda uma mensagem — sobre um projeto, uma ideia ou só pra trocar uma ideia sobre design e dados.</p>
+
+          <form class="formulario" id="formContato" action="#" method="post" novalidate>
+            <div class="campo">
+              <label for="nome">Nome</label>
+              <input type="text" id="nome" name="nome" placeholder="Como você se chama?">
+              <span class="erro-campo" id="erro-nome"></span>
+            </div>
+            <div class="campo">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com">
+              <span class="erro-campo" id="erro-email"></span>
+            </div>
+            <div class="campo">
+              <label for="mensagem">Mensagem</label>
+              <textarea id="mensagem" name="mensagem" rows="5" placeholder="Conta pra mim o que você tem em mente"></textarea>
+              <span class="erro-campo" id="erro-mensagem"></span>
+            </div>
+            <button type="submit" class="botao-enviar">Enviar mensagem</button>
+            <p class="form-feedback" id="formFeedback"></p>
+            <p class="form-aviso">Este formulário ainda não envia e-mail de verdade — para funcionar, conecte-o a um serviço como Formspree ou a um backend próprio.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="rodape">
+    <div class="container">
+      <span class="rodape-marca">Gustavo Begatti</span>
+
+      <ul class="rodape-redes">
+        <li>
+          <a href="https://instagram.com/gustavo_begatt" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Gustavo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+        </li>
+      </ul>
+
+      <p class="rodape-copy">Feito por Gustavo Begatti · © 2026 · portfólio em construção</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>

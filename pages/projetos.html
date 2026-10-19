@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projetos — Gustavo Begatti</title>
+  <meta name="description" content="Projetos de Design, Banco de Dados e Análise de Dados de Gustavo Begatti.">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="fundo-corticha">
+
+  <!-- ===================== CABEÇALHO ===================== -->
+  <header class="cabecalho">
+    <div class="container">
+      <a href="../index.html" class="marca">
+        <span class="pino" aria-hidden="true"></span>
+        Gustavo <span class="assinatura">Begatti</span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navPrincipal">
+        <span></span><span></span><span></span>
+        <span class="visually-hidden">Abrir menu</span>
+      </button>
+
+      <nav class="nav-principal" id="navPrincipal" aria-label="Navegação principal">
+        <ul>
+          <li><a href="../index.html">Sobre</a></li>
+          <li><a href="projetos.html" aria-current="page">Projetos</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ===================== PROJETOS ===================== -->
+    <section class="secao" aria-label="Projetos">
+      <div class="container">
+        <div class="secao-cabecalho">
+          <h2 class="secao-titulo">Meus <span class="marcador">projetos</span></h2>
+          <p class="secao-descricao">Três áreas, três formas de resolver problema. Cada projeto abre em uma página própria com o PDF completo.</p>
+        </div>
+
+        <div class="grade-projetos">
+
+          <!-- Projeto 1 — Design -->
+          <article class="card-projeto cartao-papel" data-cat="design">
+            <span class="fita" aria-hidden="true"></span>
+            <span class="card-categoria">Design</span>
+            <svg class="icone" viewBox="0 0 48 48" aria-hidden="true">
+              <circle cx="24" cy="24" r="20" fill="none" stroke="var(--laranja)" stroke-width="2.5"/>
+              <circle cx="17" cy="18" r="3" fill="var(--laranja)"/>
+              <circle cx="30" cy="15" r="3" fill="var(--azul-tinta)"/>
+              <circle cx="34" cy="28" r="3" fill="var(--amarelo)"/>
+              <circle cx="18" cy="31" r="3" fill="var(--verde-quadro)"/>
+            </svg>
+            <h3>Identidade Visual</h3>
+            <p>Projeto de criação de marca, do conceito à aplicação: logotipo, paleta, tipografia e peças gráficas.</p>
+            <a class="ver-pdf" href="projeto1.html">Ver projeto →</a>
+          </article>
+
+          <!-- Projeto 2 — Banco de Dados -->
+          <article class="card-projeto cartao-papel" data-cat="banco">
+            <span class="fita" aria-hidden="true"></span>
+            <span class="card-categoria">Banco de Dados</span>
+            <svg class="icone" viewBox="0 0 48 48" aria-hidden="true">
+              <ellipse cx="24" cy="10" rx="16" ry="6" fill="none" stroke="var(--azul-tinta)" stroke-width="2.5"/>
+              <path d="M8 10 V24 C8 27.3 15.2 30 24 30 C32.8 30 40 27.3 40 24 V10" fill="none" stroke="var(--azul-tinta)" stroke-width="2.5"/>
+              <path d="M8 24 V38 C8 41.3 15.2 44 24 44 C32.8 44 40 41.3 40 38 V24" fill="none" stroke="var(--azul-tinta)" stroke-width="2.5"/>
+            </svg>
+            <h3>Modelagem de Banco de Dados</h3>
+            <p>Modelo relacional completo: diagrama entidade-relacionamento, normalização e estrutura de tabelas.</p>
+            <a class="ver-pdf" href="projeto2.html">Ver projeto →</a>
+          </article>
+
+          <!-- Projeto 3 — Análise de Dados -->
+          <article class="card-projeto cartao-papel" data-cat="dados">
+            <span class="fita" aria-hidden="true"></span>
+            <span class="card-categoria">Análise de Dados</span>
+            <svg class="icone" viewBox="0 0 48 48" aria-hidden="true">
+              <line x1="6" y1="42" x2="42" y2="42" stroke="var(--verde-quadro)" stroke-width="2.5"/>
+              <rect x="10" y="26" width="7" height="16" fill="var(--laranja)"/>
+              <rect x="21" y="16" width="7" height="26" fill="var(--azul-tinta)"/>
+              <rect x="32" y="22" width="7" height="20" fill="var(--amarelo)"/>
+            </svg>
+            <h3>Análise de Dados</h3>
+            <p>Exploração de um conjunto de dados real: limpeza, visualizações e conclusões apoiadas em evidência.</p>
+            <a class="ver-pdf" href="projeto3.html">Ver projeto →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===================== RODAPÉ ===================== -->
+  <footer class="rodape">
+    <div class="container">
+      <span class="rodape-marca">Gustavo Begatti</span>
+
+      <ul class="rodape-redes">
+        <li>
+          <a href="https://www.instagram.com/gustavo.begatt?stkn=MTl3ZzR0NGR1b3doag%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer" aria-label="Instagram de Gustavo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+          </a>
+        </li>
+      </ul>
+
+      <p class="rodape-copy">Feito por Gustavo Begatti · © 2026 · portfólio em construção</p>
+    </div>
+  </footer>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>
