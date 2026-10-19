@@ -106,3 +106,54 @@ if (formContato) {
     });
   });
 }
+
+/* ---------------------------------------------------------
+   3. Consumo da API do ViaCEP
+   Página: pages/contato.html
+   --------------------------------------------------------- */
+const btnBuscarCep = document.querySelector('#btnBuscarCep');
+
+if (btnBuscarCep) {
+    const campoCep = document.querySelector('#cep');
+    const erroCep = document.querySelector('#erro-cep');
+
+    async function buscarCEP() {
+        const cepLimpo = campoCep.value.trim().replace(/\D/g, '');
+        
+        // Limpa erros anteriores
+        erroCep.textContent = '';
+        campoCep.classList.remove('campo-invalido');
+
+        if (cepLimpo.length !== 8) {
+            campoCep.classList.add('campo-invalido');
+            erroCep.textContent = 'O CEP deve conter 8 dígitos.';
+            return;
+        }
+
+        try {
+            const resposta = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
+            
+            if (!resposta.ok) {
+                throw new Error('Erro na rede ao buscar o CEP.');
+            }
+
+            const dados = await resposta.json();
+
+            if (dados.erro) {
+                throw new Error('CEP não encontrado.');
+            }
+
+            // Atualiza o DOM preenchendo os campos automaticamente
+            document.querySelector('#rua').value = dados.logradouro || '';
+            document.querySelector('#bairro').value = dados.bairro || '';
+            document.querySelector('#cidade').value = dados.localidade || '';
+            document.querySelector('#estado').value = dados.uf || '';
+
+        } catch (erro) {
+            campoCep.classList.add('campo-invalido');
+            erroCep.textContent = 'Não foi possível buscar o CEP. Verifique o número digitado.';
+        }
+    }
+
+    btnBuscarCep.addEventListener('click', buscarCEP);
+}
