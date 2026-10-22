@@ -6,10 +6,20 @@
   <title>Gustavo Begatti — Portfólio</title>
   <meta name="description" content="Portfólio de Gustavo Begatti: projetos de Design, Banco de Dados e Análise de Dados.">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Estilos para a nova secção de Gestão de Projetos via API */
+    .secao-portfolio-api { background: rgba(255,255,255,0.85); margin: 40px auto; padding: 30px; border-radius: 12px; max-width: 800px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+    .secao-portfolio-api h2 { color: var(--azul-tinta, #111); margin-bottom: 15px; font-family: 'Baloo 2', sans-serif; }
+    .form-projeto { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+    .form-projeto input { padding: 10px; flex: 1; min-width: 180px; border: 1px solid #ccc; border-radius: 6px; font-size: 1rem; }
+    .form-projeto button { padding: 10px 20px; background-color: #28a745; color: white; border: none; border-radius: 6px; font-weight: bold; cursor: pointer; }
+    .form-projeto button:hover { background-color: #218838; }
+    .lista-projetos { list-style-type: none; padding: 0; }
+    .lista-projetos li { background: #fff; margin-bottom: 10px; padding: 12px 15px; border-left: 5px solid #28a745; border-radius: 4px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
+  </style>
 </head>
 <body class="fundo-corticha">
 
-  
   <header class="cabecalho">
     <div class="container">
       <a href="index.html" class="marca">
@@ -49,12 +59,12 @@
             Curioso por natureza. Sempre construindo algo novo.
           </div>
 
-         <div class="hero-conteudo">
-  <figure class="polaroid">
-    <span class="fita" aria-hidden="true"></span>
-    <img src="img/Gustavo Begatti.jpeg" alt="Foto de Gustavo Begatti" class="foto-real">
-    <figcaption>Esse é o Gustavo :)</figcaption>
-  </figure>
+          <div class="hero-conteudo">
+            <figure class="polaroid">
+              <span class="fita" aria-hidden="true"></span>
+              <img src="img/Gustavo Begatti.jpeg" alt="Foto de Gustavo Begatti" class="foto-real">
+              <figcaption>Esse é o Gustavo :)</figcaption>
+            </figure>
 
             <div class="hero-texto">
               <h1 class="hero-titulo">Gustavo<br><span class="destaque">Begatti</span></h1>
@@ -75,6 +85,25 @@
       </div>
     </section>
 
+    <!-- SECÇÃO DA ATIVIDADE: Registo de Projetos via API Flask -->
+    <section class="secao-portfolio-api">
+      <h2>🚀 Gestão de Projetos (API Flask)</h2>
+      <p style="margin-bottom: 20px; color: #555;">Atividade prática: Integração Front-end com API Python (GET e POST de Projetos).</p>
+
+      <!-- Formulário para Cadastro (POST) -->
+      <form id="form-projeto" class="form-projeto">
+        <input type="text" id="nome" placeholder="Nome do Projeto" required>
+        <input type="text" id="tecnologia" placeholder="Tecnologia (ex: Python)" required>
+        <input type="text" id="status" placeholder="Status (ex: Concluído)" required>
+        <button type="submit">Cadastrar Projeto</button>
+      </form>
+
+      <h3>Projetos Dinâmicos na Base de Dados</h3>
+      <ul id="lista-projetos" class="lista-projetos">
+        <!-- Os dados do Flask entram aqui automaticamente -->
+      </ul>
+    </section>
+
   </main>
 
   <footer class="rodape">
@@ -93,6 +122,67 @@
     </div>
   </footer>
 
+  <!-- Script Geral do Portfólio -->
   <script src="js/script.js" defer></script>
+
+  <!-- Script da Atividade: GET e POST de Projetos com a API Flask -->
+  <script>
+    const API_URL = 'http://localhost:5000/projetos';
+
+    // 1. Função GET para listar os projetos (com Try/Catch)
+    async function listarProjetos() {
+        try {
+            const resposta = await fetch(API_URL);
+            if (!resposta.ok) throw new Error('Erro ao carregar os projetos');
+            
+            const projetos = await resposta.json();
+            const lista = document.getElementById('lista-projetos');
+            lista.innerHTML = ''; // Limpa a lista antes de preencher
+
+            projetos.forEach(proj => {
+                const li = document.createElement('li');
+                li.textContent = `${proj.nome} — ${proj.tecnologia} [Status: ${proj.status}]`;
+                lista.appendChild(li);
+            });
+        } catch (erro) {
+            console.error('Erro no GET:', erro);
+        }
+    }
+
+    // 2. Função POST para cadastrar novo projeto (sem recarregar a página)
+    async function cadastrarProjeto(event) {
+        event.preventDefault(); // Evita recarregar a página
+
+        const dados = {
+            nome: document.getElementById('nome').value,
+            tecnologia: document.getElementById('tecnologia').value,
+            status: document.getElementById('status').value
+        };
+
+        try {
+            const resposta = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(dados) // Converte para JSON
+            });
+
+            if (!resposta.ok) throw new Error('Erro ao cadastrar o projeto');
+
+            // Limpa o formulário
+            document.getElementById('form-projeto').reset();
+
+            // Atualiza a lista na tela automaticamente
+            listarProjetos();
+        } catch (erro) {
+            console.error('Erro no POST:', erro);
+        }
+    }
+
+    // Associa o evento de submit ao formulário
+    document.getElementById('form-projeto').addEventListener('submit', cadastrarProjeto);
+
+    // Carrega os projetos assim que a página é aberta
+    listarProjetos();
+  </script>
 </body>
 </html>
